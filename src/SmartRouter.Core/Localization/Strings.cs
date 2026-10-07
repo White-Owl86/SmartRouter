@@ -20,8 +20,17 @@ public static class Strings
         ["Cancel"] = "Cancel",
         ["Save"] = "Save Settings",
         ["Reset"] = "Reset to Defaults",
-        ["Refresh"] = "Refresh",
         ["Apply"] = "Apply",
+
+        // Menus
+        ["MenuFile"] = "File",
+        ["MenuTools"] = "Tools",
+        ["MenuModes"] = "Routing Mode",
+        ["MenuLanguage"] = "Language",
+        ["MenuHelp"] = "Help",
+        ["MenuExit"] = "Exit",
+        ["MenuAbout"] = "About",
+        ["AboutMessage"] = "Smart Anti-Sanction & Latency Router v1.0\nIntelligent cross-platform network router for developers & gamers.",
 
         // Navigation Tabs
         ["TabDashboard"] = "Dashboard",
@@ -148,8 +157,17 @@ public static class Strings
         ["Cancel"] = "انصراف",
         ["Save"] = "ذخیره تنظیمات",
         ["Reset"] = "بازگردانی به پیش‌فرض",
-        ["Refresh"] = "تازه‌سازی",
         ["Apply"] = "اعمال",
+
+        // Menus
+        ["MenuFile"] = "پرونده",
+        ["MenuTools"] = "ابزارها",
+        ["MenuModes"] = "حالت مسیریابی",
+        ["MenuLanguage"] = "زبان",
+        ["MenuHelp"] = "راهنما",
+        ["MenuExit"] = "خروج",
+        ["MenuAbout"] = "درباره برنامه",
+        ["AboutMessage"] = "جعبه‌ابزار هوشمند رفع تحریم و بهینه‌سازی مسیر شبکه\nنسخه ۱.۰ - طراحی شده برای برنامه‌نویسان و گیمرها.",
 
         // Navigation Tabs
         ["TabDashboard"] = "داشبورد",

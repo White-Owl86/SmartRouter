@@ -79,4 +79,30 @@ public partial class MainWindow : Window
     {
         _vm.SaveConfiguration();
     }
+
+    private void OnExitClicked(object? sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void OnSetModeSmartSplitClicked(object? sender, RoutedEventArgs e)
+    {
+        _vm.SetRoutingMode(RoutingMode.SmartSplitDns);
+    }
+
+    private void OnSetModeFullAntiSanctionClicked(object? sender, RoutedEventArgs e)
+    {
+        _vm.SetRoutingMode(RoutingMode.FullAntiSanction);
+    }
+
+    private void OnSetModeFastestGlobalClicked(object? sender, RoutedEventArgs e)
+    {
+        _vm.SetRoutingMode(RoutingMode.FastestGlobal);
+    }
+
+    private void OnAboutClicked(object? sender, RoutedEventArgs e)
+    {
+        _vm.NotificationMessage = _vm.Loc["AboutMessage"];
+        _vm.IsNotificationVisible = true;
+    }
 }

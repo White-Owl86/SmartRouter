@@ -8,14 +8,16 @@
         x:Class="SmartRouter.UI.MainWindow"
         x:DataType="vm:MainViewModel"
         Title="Smart Anti-Sanction &amp; Latency Router"
-        Width="1020" Height="720"
+        Icon="/Assets/icon.png"
+        FontFamily="Inter, Segoe UI, Ubuntu, DejaVu Sans, Tahoma, sans-serif"
+        Width="1020" Height="730"
         MinWidth="850" MinHeight="580"
         WindowStartupLocation="CenterScreen"
         FlowDirection="{Binding CurrentFlowDirection}">
 
     <Window.Styles>
         <Style Selector="TextBlock.headerTitle">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="17"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style Selector="Border.card">
@@ -37,15 +39,49 @@
             <Setter Property="Padding" Value="12,6"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
+        <Style Selector="MenuItem">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+        </Style>
     </Window.Styles>
 
-    <Grid RowDefinitions="Auto,*,Auto" Margin="16">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="14">
+        <!-- Application Native Menu Bar -->
+        <Border Grid.Row="0" Margin="0,0,0,8" Padding="4,2" Background="#111622" CornerRadius="6" BorderBrush="#2D3748" BorderThickness="1">
+            <Menu>
+                <MenuItem Header="{Binding Loc[MenuFile]}">
+                    <MenuItem Header="{Binding StartStopButtonText}" Click="OnStartStopClicked"/>
+                    <Separator/>
+                    <MenuItem Header="{Binding Loc[MenuExit]}" Click="OnExitClicked"/>
+                </MenuItem>
+                <MenuItem Header="{Binding Loc[MenuTools]}">
+                    <MenuItem Header="{Binding Loc[TestAllPings]}" Click="OnBenchmarkPingsClicked"/>
+                    <MenuItem Header="{Binding Loc[RunDiagnostic]}" Click="OnRunDiagnosticsClicked"/>
+                    <Separator/>
+                    <MenuItem Header="{Binding Loc[ClearLogs]}" Click="OnClearLogsClicked"/>
+                </MenuItem>
+                <MenuItem Header="{Binding Loc[MenuModes]}">
+                    <MenuItem Header="{Binding Loc[ModeSmartSplit]}" Click="OnSetModeSmartSplitClicked"/>
+                    <MenuItem Header="{Binding Loc[ModeFullAntiSanction]}" Click="OnSetModeFullAntiSanctionClicked"/>
+                    <MenuItem Header="{Binding Loc[ModeFastestGlobal]}" Click="OnSetModeFastestGlobalClicked"/>
+                </MenuItem>
+                <MenuItem Header="{Binding Loc[MenuLanguage]}">
+                    <MenuItem Header="فارسی (Persian)" Click="OnSetFarsiClicked"/>
+                    <MenuItem Header="English" Click="OnSetEnglishClicked"/>
+                </MenuItem>
+                <MenuItem Header="{Binding Loc[MenuHelp]}">
+                    <MenuItem Header="{Binding Loc[MenuAbout]}" Click="OnAboutClicked"/>
+                </MenuItem>
+            </Menu>
+        </Border>
+
         <!-- Top App Header -->
-        <Border Grid.Row="0" Classes="card" Margin="0,0,0,12" Background="#161B26">
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12" Background="#161B26">
             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                <!-- Status icon + Title -->
-                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
-                    <Ellipse Width="16" Height="16" Fill="{Binding StatusBrush}" StrokeThickness="2" Stroke="#FFFFFF22" VerticalAlignment="Center"/>
+                <!-- Status icon + Logo + Title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                    <Image Source="/Assets/icon.png" Width="36" Height="36" VerticalAlignment="Center"/>
+                    <Ellipse Width="14" Height="14" Fill="{Binding StatusBrush}" StrokeThickness="2" Stroke="#FFFFFF22" VerticalAlignment="Center"/>
                     <StackPanel>
                         <TextBlock Text="{Binding Loc[AppTitle]}" Classes="headerTitle" Foreground="White"/>
                         <TextBlock Text="{Binding Loc[AppSubtitle]}" FontSize="12" Foreground="#A0AEC0"/>
@@ -72,7 +108,7 @@
         </Border>
 
         <!-- Main Tabs Content -->
-        <TabControl Grid.Row="1">
+        <TabControl Grid.Row="2">
             <!-- TAB 1: DASHBOARD -->
             <TabItem Header="{Binding Loc[TabDashboard]}">
                 <ScrollViewer Margin="0,8">
@@ -333,7 +369,7 @@
         </TabControl>
 
         <!-- Bottom Notification / Toast Bar -->
-        <Border Grid.Row="2" Margin="0,8,0,0" Padding="12,6" Background="#2D3748" CornerRadius="6" IsVisible="{Binding IsNotificationVisible}">
+        <Border Grid.Row="3" Margin="0,8,0,0" Padding="12,6" Background="#2D3748" CornerRadius="6" IsVisible="{Binding IsNotificationVisible}">
             <TextBlock Text="{Binding NotificationMessage}" Foreground="#E2E8F0" FontSize="12" HorizontalAlignment="Center"/>
         </Border>
     </Grid>

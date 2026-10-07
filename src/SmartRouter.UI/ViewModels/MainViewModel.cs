@@ -233,6 +233,22 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
+    public void SetRoutingMode(RoutingMode mode)
+    {
+        _router.Config.Mode = mode;
+        _router.SaveConfig();
+        var modeName = mode switch
+        {
+            RoutingMode.SmartSplitDns => _loc["ModeSmartSplit"],
+            RoutingMode.FullAntiSanction => _loc["ModeFullAntiSanction"],
+            RoutingMode.FastestGlobal => _loc["ModeFastestGlobal"],
+            _ => mode.ToString()
+        };
+        NotificationMessage = $"{_loc["ModeLabel"]}: {modeName}";
+        IsNotificationVisible = true;
+        OnPropertyChanged(nameof(StatusText));
+    }
+
     public async Task ToggleStartStopAsync()
     {
         if (IsRunning)
